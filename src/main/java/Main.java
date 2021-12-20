@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Main {
 
 
-    Scanner scanner = new Scanner(System.in);
     School school = new School();
 
 
@@ -21,7 +20,7 @@ public class Main {
 
         do {
             String[] choices = {"Select...", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-                    "11", "12", "13", "14", "15", "16", "17", "Quit"};
+                    "11", "12", "13", "14", "15", "16", "17", "18", "Quit"};
             choice = (String) JOptionPane.showInputDialog(null, "Welcome! Please choose an activity\n" +
 
                             "\n1. Add student" +
@@ -44,6 +43,7 @@ public class Main {
                             "\n15. View all students" +
                             "\n16. View all teachers" +
                             "\n17. Assign teacher to the course" +
+                            "\n18. Update exam result" +
                             "\nChoose \"Quit\" to finish...",
                     "School Management System",
                     JOptionPane.PLAIN_MESSAGE,
@@ -55,7 +55,7 @@ public class Main {
             switch (choice) {
                 case "Quit":
                     int answer = JOptionPane.showConfirmDialog(null, "Are you sure?", "Menu", JOptionPane.YES_NO_OPTION);
-                    if(answer == 1){
+                    if (answer == 1) {
                         schoolMenu();
                     }
                     break;
@@ -100,6 +100,11 @@ public class Main {
                     break;
                 case "14":
                     school.createExam();
+//                    try {
+//                        school.createExam();
+//                    }catch (Exception exception){
+//                        JOptionPane.showMessageDialog(null, exception);
+//                    }
                     break;
                 case "15":
                     school.viewAllStudents();
@@ -110,6 +115,8 @@ public class Main {
                 case "17":
                     teacherToCourse();
                     break;
+                case "18":
+                    updateExamResults();
                 default:
                     break;
             }
@@ -121,6 +128,7 @@ public class Main {
 
 
     void addCourse() {
+
         String name = JOptionPane.showInputDialog("Course name");
         int courseLength = Integer.parseInt(JOptionPane.showInputDialog("Course length"));
         Course course = new Course(name, courseLength);
@@ -236,7 +244,6 @@ public class Main {
 
                         student.grade = newGrade;
                     case "Quit":
-                        //JOptionPane.showMessageDialog(null, "Return to school menu");
                         break;
                     default:
                         break;
@@ -318,7 +325,6 @@ public class Main {
 
 
     }
-
 
 
 }
