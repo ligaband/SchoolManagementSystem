@@ -301,6 +301,24 @@ public class Main {
 
 
     }
+    void updateExamResults(){
+        String examName = JOptionPane.showInputDialog("Enter exam name");
+        Exam exam = school.findExam(examName);
+        int index = school.getExams().indexOf(exam);
+        String studentName = JOptionPane.showInputDialog("Enter student name");
+        String studentSurname = JOptionPane.showInputDialog("Enter student surname");
+        Student student = school.findStudentByName(studentName, studentSurname);
+        String courseName = JOptionPane.showInputDialog("Enter course name");
+        Course course = school.findCourse(courseName);
+        int newExamScore = Integer.parseInt(JOptionPane.showInputDialog("Enter new score"));
+        exam.examScore = newExamScore;
+        school.exams.set(index, exam);
+        JOptionPane.showMessageDialog(null, "Student's " + student + " new score at " + examName + " exam " + " is " + newExamScore);
+
+
+
+    }
+
 
 
 }
